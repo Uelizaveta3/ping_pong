@@ -3,8 +3,6 @@ from pygame import *
 main_win = display.set_mode((700,500))
 display.set_caption('Пинг Понг')
 
-main_win.fill((0, 255, 255))
-
 class GameSprite(sprite.Sprite):
     def __init__ (self, speed, x, y, img, size=(65,70)):
         super().__init__()
@@ -35,21 +33,26 @@ class Player(GameSprite):
 
 #шрифты
 font.init()
-lose_1 = font.render(
-    'игрок 1 проиграл', True, (139, 0, 0)
-)
+# lose_1 = font.render(
+#     'игрок 1 проиграл', True, (139, 0, 0)
+# )
 
-lose_2 = font.render(
-    'игрок 2 проиграл', True, (139, 0, 0)
-)
+# lose_2 = font.render(
+#     'игрок 2 проиграл', True, (139, 0, 0)
+# )
 
 #звуки
 mixer.init()
 
 
 game = True
+finish = False
 
 while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
+    if finish != True:
+        main_win.fill((0, 255, 255))
+    display.update()
+    
