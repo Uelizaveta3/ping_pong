@@ -1,10 +1,10 @@
 from pygame import *
 
 main_win = display.set_mode((700,500))
-display.set_caption('Пинг Понг')
+display.set_caption('Ping Pong')
 
 class GameSprite(sprite.Sprite):
-    def __init__ (self, speed, x, y, img, size=(65,70)):
+    def __init__ (self, speed, x, y, img, size):
         super().__init__()
         self.speed = speed
         self.size = size
@@ -25,11 +25,11 @@ class Player(GameSprite):
         if keys[K_s] and self.rect.y < 480:
             self.rect.y += self.speed
     def update_r(self):
+        keys = key.get_pressed()
         if keys[K_UP] and self.rect.y > 0:
             self.rect.y -= self.speed
         if keys[K_DOWN] and self.rect.y < 480:
             self.rect.y += self.speed
-
 
 #шрифты
 font.init()
@@ -55,4 +55,5 @@ while game:
     if finish != True:
         main_win.fill((0, 255, 255))
     display.update()
+    
     
